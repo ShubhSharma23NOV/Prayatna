@@ -1,0 +1,27 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('Commercial Complex - Zone III'),'2;1');
+FILE_NAME('CommercialComplex.ifc','2026-02-10T12:00:00',('Demo'),('CivilCore'),'Commercial Complex','IFC4','');
+FILE_SCHEMA(('IFC4'));
+ENDSEC;
+
+DATA;
+#1=IFCPERSON($,'Demo',$,$,$,$,$,$);
+#2=IFCORGANIZATION($,'CivilCore',$,$,$);
+#3=IFCPERSONANDORGANIZATION(#1,#2,$);
+#4=IFCAPPLICATION(#2,'1.0','CivilCore','CC');
+#5=IFCOWNERHISTORY(#3,#4,$,.ADDED.,$,$,$,0);
+
+#10=IFCPROJECT('COM8',$,#5,'Commercial Complex (Zone III)',$,$,$,$,(#20),#30);
+#20=IFCGEOMETRICREPRESENTATIONCONTEXT($,'Model',3,1.E-5,#25,$);
+#25=IFCAXIS2PLACEMENT3D(#26,$,$);
+#26=IFCCARTESIANPOINT((0.,0.,0.));
+#30=IFCUNITASSIGNMENT((#31));
+#31=IFCSIUNIT(*,.LENGTHUNIT.,$,.METRE.);
+
+#100=IFCBUILDING('B2',$,#5,'Commercial Complex',$,$,#101,$,$,.ELEMENT.,$);
+#101=IFCLOCALPLACEMENT($,#25);
+
+#500=IFCRELAGGREGATES('RelProj',$,#5,$,$,#10,(#100));
+ENDSEC;
+END-ISO-10303-21;
